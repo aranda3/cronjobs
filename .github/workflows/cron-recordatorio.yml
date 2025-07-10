@@ -1,0 +1,13 @@
+name: Recordatorio
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # Todos los días a las 9:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Llamar a la URL de recordatorio
+        run: curl -s https://project-425834.infinityfreeapp.com/recordatorio
