@@ -10,4 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Llamar a la URL de recordatorio
-        run: curl -s https://project-425834.infinityfreeapp.com/recordatorio
+        run: curl -A "Mozilla/5.0" -H "Accept: text/html" https://project-425834.infinityfreeapp.com/recordatorio
+        
