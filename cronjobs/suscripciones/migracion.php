@@ -93,6 +93,7 @@ try {
 }
 */
 
+/*
 // Configuración de conexión PostgreSQL en Render
 $host = 'dpg-d1ob2n49c44c73fcmc40-a'; 
 $port = 5432;
@@ -135,6 +136,77 @@ try {
     ]);
 
     echo "✅ Migración completada correctamente.";
+
+} catch (PDOException $e) {
+    echo "❌ Error en la migración: " . $e->getMessage();
+}
+*/
+
+// Configuración de conexión PostgreSQL en Render
+$host = 'dpg-d1ob2n49c44c73fcmc40-a'; 
+$port = 5432;
+$db   = 'mitienda03_postgres';
+$user = 'mitienda03_postgres_user';
+$pass = 'FAamO0g0MwEtsCtHVXozYKzDtbaMuNP4';
+
+try {
+    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Query de inserción
+    $sql = "INSERT INTO usuarios (
+        id, email, password_hash, stripe_customer_id, rol, tienda_id, creado_en
+    ) VALUES (
+        :id, :email, :password_hash, :stripe_customer_id, :rol, :tienda_id, :creado_en
+    )";
+
+    $stmt = $pdo->prepare($sql);
+
+    // Datos a insertar
+    $usuarios = [
+        [
+            'id' => 2,
+            'email' => 'morin@gmail.com',
+            'password_hash' => '$2y$10$Iie8kOulFihuWXYd3GXJduN41S6B0Z4ag0h/ENvixJe...',
+            'stripe_customer_id' => 'cus_SYqjMQqB9vX7sp',
+            'rol' => 'propietario',
+            'tienda_id' => 2,
+            'creado_en' => '2025-06-29 20:08:24'
+        ],
+        [
+            'id' => 4,
+            'email' => 'juan@gmail.com',
+            'password_hash' => '$2y$10$00cqm8KUgZMn2sezjgDvxeQWtGvTXk1p51grZqSOSTj...',
+            'stripe_customer_id' => null,
+            'rol' => 'vendedor',
+            'tienda_id' => 2,
+            'creado_en' => '2025-07-06 13:27:39'
+        ],
+        [
+            'id' => 5,
+            'email' => 'maria',
+            'password_hash' => '$2y$10$/wHOSD2BkAalhhGzbKPv1.ZPhx3YD5Nms.vKuXC1kq0...',
+            'stripe_customer_id' => null,
+            'rol' => 'colaborador',
+            'tienda_id' => 2,
+            'creado_en' => '2025-07-06 14:52:20'
+        ]
+    ];
+
+    // Ejecutar inserciones
+    foreach ($usuarios as $user) {
+        $stmt->execute([
+            ':id' => $user['id'],
+            ':email' => $user['email'],
+            ':password_hash' => $user['password_hash'],
+            ':stripe_customer_id' => $user['stripe_customer_id'],
+            ':rol' => $user['rol'],
+            ':tienda_id' => $user['tienda_id'],
+            ':creado_en' => $user['creado_en']
+        ]);
+    }
+
+    echo "✅ Usuarios insertados correctamente.";
 
 } catch (PDOException $e) {
     echo "❌ Error en la migración: " . $e->getMessage();
