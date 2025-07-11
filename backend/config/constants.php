@@ -6,7 +6,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');             
 define('DB_CHARSET', 'utf8mb4');
    
-define('BASE_URL', '/web-changarrito');
+define('BASE_URL', '/https://mitienda03.onrender.com');
 
 define('SECRET_KEY', 'sk_test_51RddXhQoRt3Gj9iGWvciCnUtWYegGpnaOaEBZxCRNRupBm83UHfLhQJkKHB5heJ3bW9jk2ba2fNfxOKtN4IjTITw00fmP658nt');
 define('PUBLIC_KEY', 'pk_test_51RddXhQoRt3Gj9iGpCHwVB15XOMaAaBdFqTcKRjl1Vmu3qp1aNfaBu68Xd8bHW4qQZlPhEeULhzxIzE460qDteiB0073TGF84z');
