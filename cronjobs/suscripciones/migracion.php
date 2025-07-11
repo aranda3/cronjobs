@@ -1,4 +1,5 @@
 <?php
+/*
 try {
     $dsn = "pgsql:host=dpg-d1ob2n49c44c73fcmc40-a;port=5432;dbname=mitienda03_postgres;user=mitienda03_postgres_user;password=FAamO0g0MwEtsCtHVXozYKzDtbaMuNP4";
     $pdo = new PDO($dsn);
@@ -90,3 +91,52 @@ try {
 } catch (PDOException $e) {
     echo "Error al ejecutar la migración: " . $e->getMessage();
 }
+*/
+
+// Configuración de conexión PostgreSQL en Render
+$host = 'dpg-d1ob2n49c44c73fcmc40-a'; 
+$port = 5432;
+$db   = 'mitienda03_postgres';
+$user = 'mitienda03_postgres_user';
+$pass = 'FAamO0g0MwEtsCtHVXozYKzDtbaMuNP4';
+
+try {
+    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Insertar datos en la tabla suscripciones
+    $sql = "INSERT INTO suscripciones (
+        id,
+        propietario_id,
+        stripe_subscription_id,
+        stripe_price_id,
+        estado,
+        creada_en,
+        nivel_plan
+    ) VALUES (
+        :id,
+        :propietario_id,
+        :stripe_subscription_id,
+        :stripe_price_id,
+        :estado,
+        :creada_en,
+        :nivel_plan
+    )";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ':id' => 13,
+        ':propietario_id' => 2,
+        ':stripe_subscription_id' => 'sub_1RfYdMQoRt3Gj9iGCekHekga',
+        ':stripe_price_id' => 'price_1RdeF4QoRt3Gj9iG4Jzyx26Q',
+        ':estado' => 'activa',
+        ':creada_en' => '2025-06-29 22:44:13',
+        ':nivel_plan' => 2
+    ]);
+
+    echo "✅ Migración completada correctamente.";
+
+} catch (PDOException $e) {
+    echo "❌ Error en la migración: " . $e->getMessage();
+}
+
