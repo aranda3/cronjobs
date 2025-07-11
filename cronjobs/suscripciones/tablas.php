@@ -1,6 +1,7 @@
 <?php
 // Configura tu conexión PostgreSQL (Render)
-$host = 'dpg-XXXXXX'; // reemplaza con tu host
+
+$host = 'dpg-d1ob2n49c44c73fcmc40-a'; 
 $port = 5432;
 $db   = 'mitienda03_postgres';
 $user = 'mitienda03_postgres_user';
