@@ -148,4 +148,8 @@ return function (RouteCollector $r, $ruta) {
         require 'cronjobs/suscripciones/enviar_recordatorio.php';         
     });
 
+    $r->addRoute('GET', '/migracion', function () {
+        require 'cronjobs/suscripciones/migracion.php';         
+    });
+
 };
