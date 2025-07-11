@@ -4,6 +4,9 @@ FROM php:8.2-apache
 # Habilitar mod_rewrite
 RUN a2enmod rewrite
 
+# Instalar driver PostgreSQL
+RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql
+
 # Copiar archivos al contenedor
 COPY . /var/www/html/
 
