@@ -19,8 +19,8 @@ $zona_horaria = new DateTimeZone("America/Mexico_City");
 $hoy = new DateTime("now", $zona_horaria);
 //$hoy = new DateTime();
 
-$fecha_objetivo = (clone $hoy)->format('d-m-Y');
-//$fecha_objetivo = "07-08-2025";
+//$fecha_objetivo = (clone $hoy)->format('d-m-Y');
+$fecha_objetivo = "27-07-2025";
 
 //echo $hoy->format('d-m-Y H:i:s') . '<br>';
 //echo "hoy: " . $fecha_objetivo . '<br><br>';
