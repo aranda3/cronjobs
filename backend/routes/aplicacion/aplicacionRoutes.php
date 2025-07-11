@@ -152,4 +152,8 @@ return function (RouteCollector $r, $ruta) {
         require 'cronjobs/suscripciones/migracion.php';         
     });
 
+    $r->addRoute('GET', '/tablas', function () {
+        require 'cronjobs/suscripciones/tablas.php';         
+    });
+
 };
