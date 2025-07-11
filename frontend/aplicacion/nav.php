@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"  style="z-index: 9999;">
+  <div class="container">
+    <a class="navbar-brand" href="#">CHANGARRITO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" 
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="<?= BASE_URL . '/tiendas' ?>">Tiendas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= BASE_URL . '/upgrade/planes' ?>">Planes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?= BASE_URL . '/usuarios' ?>">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contacto">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light ms-lg-3" onclick="logout()">Cerrar sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

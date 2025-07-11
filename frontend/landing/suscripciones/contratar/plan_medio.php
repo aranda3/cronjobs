@@ -1,0 +1,1 @@
+<?php include 'frontend/aplicacion/suscripciones/planes/medio/index.php' ?>
