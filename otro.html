@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cliente WebSocket</title>
+</head>
+<body>
+  <h1>WebSocket con PHP (Ratchet)</h1>
+
+  <input type="text" id="mensaje" placeholder="Escribe un mensaje">
+  <button onclick="enviar()">Enviar</button>
+
+  <pre id="consola"></pre>
+
+  <script>
+
+    const socket = new WebSocket("ws://localhost:8080");
+
+    const consola = document.getElementById("consola");
+
+    socket.onopen = () => {
+      consola.innerText += "✅ Conectado al servidor WebSocket\n";
+      const token = localStorage.getItem("token");
+      socket.send(JSON.stringify({
+        comando: "conectar",
+        de: "omicron",
+        token: token
+      }));
+
+    };
+
+    socket.onmessage = (event) => {
+      consola.innerText += "📨 Mensaje recibido: " + event.data + "\n";
+    };
+
+    socket.onclose = () => {
+      consola.innerText += "🔌 Conexión cerrada\n";
+    };
+
+    socket.onerror = (error) => {
+      consola.innerText += "❌ Error: " + error.message + "\n";
+    };
+
+    function enviar() {
+        const msg = document.getElementById("mensaje").value;
+        const payload = {
+            comando: "messenger",
+            de: "omicron",
+            para: "all",
+            contenido: msg
+        };
+        socket.send(JSON.stringify(payload));
+        consola.innerText += `📤 Tú: ${msg}\n`;
+    }
+
+
+  </script>
+</body>
+</html>
