@@ -93,7 +93,7 @@ try {
 }
 */
 
-/*
+
 // Configuración de conexión PostgreSQL en Render
 $host = 'dpg-d1ob2n49c44c73fcmc40-a'; 
 $port = 5432;
@@ -140,8 +140,8 @@ try {
 } catch (PDOException $e) {
     echo "❌ Error en la migración: " . $e->getMessage();
 }
-*/
 
+/*
 // Configuración de conexión PostgreSQL en Render
 $host = 'dpg-d1ob2n49c44c73fcmc40-a'; 
 $port = 5432;
@@ -211,4 +211,5 @@ try {
 } catch (PDOException $e) {
     echo "❌ Error en la migración: " . $e->getMessage();
 }
+*/
 
