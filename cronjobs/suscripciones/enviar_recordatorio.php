@@ -9,7 +9,9 @@ $secret_key = "sk_test_51RddXhQoRt3Gj9iGWvciCnUtWYegGpnaOaEBZxCRNRupBm83UHfLhQJk
 \Stripe\Stripe::setApiKey($secret_key);
 
 // 1. Conectarse a tu base de datos y obtener suscripciones activas
-$pdo = new PDO('mysql:host=localhost;dbname=changarrito', 'root', '');
+$dsn = "pgsql:host=dpg-d1ob2n49c44c73fcmc40-a;port=5432;dbname=mitienda03_postgres;user=mitienda03_postgres_user;password=FAamO0g0MwEtsCtHVXozYKzDtbaMuNP4";
+$pdo = new PDO($dsn);
+// $pdo = new PDO('mysql:host=localhost;dbname=changarrito', 'root', '');
 $subscripciones = $pdo->query("SELECT * FROM suscripciones WHERE estado = 'activa'")->fetchAll(PDO::FETCH_ASSOC);
 
 // 2. Fecha objetivo
